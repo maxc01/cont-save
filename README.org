@@ -23,7 +23,7 @@ To exclude a specific buffer to be saved is by modifying =
 #+begin_src elisp
 (setq cont-save-exclude-buffers
       '("\\.gpg\\'"
-	    "stop-save-me"
+        "stop-save-me"
         "COMMIT_EDITMSG"))
 ;; the above variable should be set before call cont-save-mode
 (cont-save-mode)

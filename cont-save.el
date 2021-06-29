@@ -57,7 +57,8 @@
              (file-writable-p buffer-file-name)
              (not (cont-save--exclude-p (current-buffer))))
     (let ((save-silently t))
-      (save-buffer))))
+      (save-excursion
+        (save-buffer)))))
 
 ;;;###autoload
 (define-minor-mode cont-save-mode
