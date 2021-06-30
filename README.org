@@ -16,6 +16,9 @@
    (cont-save-mode)
    #+end_src
 
+* Demo
+https://user-images.githubusercontent.com/2748078/124034992-72b5ef80-d9eb-11eb-8a26-2c8707cf3564.mp4
+
 * Customization
 To exclude a specific buffer to be saved, customize variable
 =cont-save-exclude-buffer=. Note this variable should be set before call
