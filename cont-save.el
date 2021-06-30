@@ -58,7 +58,8 @@
              (not (cont-save--exclude-p (current-buffer))))
     (let ((save-silently t))
       (save-excursion
-        (save-buffer)))))
+        (save-match-data
+          (save-buffer))))))
 
 ;;;###autoload
 (define-minor-mode cont-save-mode
