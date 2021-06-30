@@ -1,30 +1,30 @@
-#+title: continuously save file like Intellij IDEA
+#+title: Continuously save file like Intellij IDEA
 
-* installation
+* Installation
 
 1. clone this repo:
-#+begin_src shell
-git clone https://github.com/maxc01/cont-save
-#+end_src
-
+   #+begin_src shell
+   git clone https://github.com/maxc01/cont-save
+   #+end_src
 2. add to your =load-path=:
-#+begin_src elisp
-(add-to-list 'load-path "/path/to/cont-save")
-#+end_src
-
+   #+begin_src elisp
+   (add-to-list 'load-path "/path/to/cont-save")
+   #+end_src
 3. load =cont-save=:
-#+begin_src elisp
-(require 'cont-save)
-(cont-save-mode)
-#+end_src
+   #+begin_src elisp
+   (require 'cont-save)
+   (cont-save-mode)
+   #+end_src
 
-* customization
-To exclude a specific buffer to be saved is by modifying =
+* Customization
+To exclude a specific buffer to be saved, customize variable
+=cont-save-exclude-buffer=. Note this variable should be set before call
+=cont-save-mode=. 
+
 #+begin_src elisp
 (setq cont-save-exclude-buffers
       '("\\.gpg\\'"
         "stop-save-me"
         "COMMIT_EDITMSG"))
-;; the above variable should be set before call cont-save-mode
 (cont-save-mode)
 #+end_src
