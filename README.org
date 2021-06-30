@@ -17,7 +17,7 @@
    #+end_src
 
 * Demo
-https://user-images.githubusercontent.com/2748078/124034992-72b5ef80-d9eb-11eb-8a26-2c8707cf3564.mp4
+https://user-images.githubusercontent.com/2748078/124036674-e48f3880-d9ed-11eb-9314-6884cdf1e704.mp4
 
 * Customization
 To exclude a specific buffer to be saved, customize variable
