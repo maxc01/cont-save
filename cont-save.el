@@ -61,21 +61,29 @@
         (save-match-data
           (save-buffer))))))
 
+(defun cont-save-mode-on ()
+  "Turn on cont-save mode."
+  (setq cont-save--exclude-names
+        (cl-remove-if-not #'stringp cont-save-exclude-buffers)
+        cont-save--exclude-modes
+        (cl-remove-if-not #'symbolp cont-save-exclude-buffers))
+  (add-hook 'after-change-functions #'cont-save--save-buffer nil t))
+
+(defun cont-save-mode-off ()
+  "Turn off cont-save mode."
+  (remove-hook 'after-change-functions #'cont-save--save-buffer t)
+  (setq cont-save-mode nil))
+
 ;;;###autoload
 (define-minor-mode cont-save-mode
   "Toggle cont-save minor mode."
-  :global t
+  :global nil
   :lighter cont-save-mode-lighter
   :group 'cont-save
   :keymap (let ((map (make-sparse-keymap))) map)
   (if cont-save-mode
-      (progn
-        (setq cont-save--exclude-names
-              (cl-remove-if-not #'stringp cont-save-exclude-buffers)
-              cont-save--exclude-modes
-              (cl-remove-if-not #'symbolp cont-save-exclude-buffers))
-        (add-hook 'after-change-functions #'cont-save--save-buffer))    
-    (remove-hook 'after-change-functions #'cont-save--save-buffer)))
+      (cont-save-mode-on)
+    (cont-save-mode-off)))
 
 
 (provide 'cont-save)
