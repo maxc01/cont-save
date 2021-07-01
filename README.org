@@ -1,5 +1,8 @@
 #+title: Continuously save file like Intellij IDEA
 
+This package provides a local minor mode =cont-save-mode= which continuously
+saves the current buffer.
+
 * Installation
 
 1. clone this repo:
@@ -12,14 +15,21 @@
    #+end_src
 3. load =cont-save=:
    #+begin_src elisp
-   (require 'cont-save)
-   (cont-save-mode)
+(use-package cont-save
+  :init
+  (setq cont-save-exclude-buffers
+        '("\\.gpg\\'"
+	  "stop-save-me"
+          "COMMIT_EDITMSG"))
+  ;; continuously save all Python files
+  (add-hook 'python-mode-hook 'cont-save-mode))
    #+end_src
 
 * Demo
 https://user-images.githubusercontent.com/2748078/124036674-e48f3880-d9ed-11eb-9314-6884cdf1e704.mp4
 
 * Customization
+
 To exclude a specific buffer to be saved, customize variable
 =cont-save-exclude-buffer=. Note this variable should be set before call
 =cont-save-mode=. 
@@ -29,5 +39,10 @@ To exclude a specific buffer to be saved, customize variable
       '("\\.gpg\\'"
         "stop-save-me"
         "COMMIT_EDITMSG"))
-(cont-save-mode)
 #+end_src
+
+* Possible issues
+
+Adding =cont-save-mode= to =emacs-lisp-mode-hook= will cause troubles if you
+have =auto-compile-mode= enabled.
+
