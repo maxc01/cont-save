@@ -50,7 +50,7 @@
                 cont-save--exclude-names)
       (member (buffer-local-value 'major-mode buf) cont-save--exclude-modes)))
 
-(defun cont-save--save-buffer (&rest args)
+(defun cont-save--save-buffer (_beg _end _len)
   "Save current buffer."
   (when (and buffer-file-name
              (buffer-modified-p (current-buffer))
